@@ -2064,7 +2064,8 @@ int cg_get_keyed_attribute(const char *controller, const char *path, const char 
         for (i = 0; keys[i]; i++) {
                 if (!values[i]) {
                         for (i = 0; keys[i]; i++) {
-                                values[i] = mfree(values[i]);
+                                free(values[i]);
+                                values[i] = NULL;
                         }
                         return -ENOENT;
                 }
